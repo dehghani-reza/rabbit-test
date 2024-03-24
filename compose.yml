@@ -7,3 +7,6 @@ services:
       - "15672:15672"
   rabbit-con:
     image: my-rabbit:1.1.5
+    depends_on:
+      rabbitmq:
+        condition: service_started
