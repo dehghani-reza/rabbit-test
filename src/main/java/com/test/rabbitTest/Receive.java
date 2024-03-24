@@ -8,12 +8,14 @@ import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
 import lombok.extern.slf4j.Slf4j;
 
+import static com.test.rabbitTest.Config.RABBIT_ADDRESS;
+
 @Slf4j
 public class Receive {
 
 	public static void getMessageFromQue(RabbitMqQue que) {
 		ConnectionFactory factory = new ConnectionFactory();
-		factory.setHost("localhost");
+		factory.setHost(RABBIT_ADDRESS);
 		try {
 			Connection connection = factory.newConnection();
 			Channel channel = connection.createChannel();

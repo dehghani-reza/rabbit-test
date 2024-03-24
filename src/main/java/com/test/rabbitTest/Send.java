@@ -7,13 +7,16 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import lombok.extern.slf4j.Slf4j;
 
+import static com.test.rabbitTest.Config.RABBIT_ADDRESS;
+
+
 @Slf4j
 public class Send {
 
 	public static void sendMessage(String message, RabbitMqQue que) {
 		log.trace("initializing sending message to que in rabbit");
 		ConnectionFactory factory = new ConnectionFactory();
-		factory.setHost("localhost");
+		factory.setHost(RABBIT_ADDRESS);
 		//The connection abstracts the socket connection, and takes care of protocol version negotiation and authentication and so on for us
 		try (Connection connection = factory.newConnection(); Channel channel = connection.createChannel()) {
 			log.debug("after getting connection from {} and before creating channel", factory.getHost());
